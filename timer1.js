@@ -14,19 +14,20 @@ console.log(args)
 const beep = () => process.stdout.write('\x07');
 
 const timer = function() {
+  newArr =[]
   if (args.length === 0) {
     return
-  }
-  for (let i = 0; i < args.length; i++) {
-    if (args[i] <= 0) {
-      args[i] = 0;
-    }
-    if (args[i] == NaN) {
-      args[i] = 0;
-    } else {
-      setTimeout( () => beep(), args[i] * 1000)
-   }   
-  }
+  } else {
+      for (let i = 0; i < args.length; i++) {
+        if (args[i] >= 0) {
+          newArr.push(args[i]) 
+        } 
+      }  
+   }
+   console.log(newArr);
+   for (let i = 0; i < newArr.length; i++) {
+    setTimeout( () => beep(), newArr[i] * 1000)
+   }
 }
 
 //call timer with args
